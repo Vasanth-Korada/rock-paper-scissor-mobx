@@ -42,7 +42,6 @@ class _RPSGameScreenState extends State<RPSGameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final gameStore = Provider.of<RPSGameStore>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("ROCK PAPER SCISSOR"),

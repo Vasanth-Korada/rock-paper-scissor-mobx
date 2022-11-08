@@ -36,7 +36,7 @@ abstract class _RPSGameStore with Store {
       case AppConstants.SCISSOR:
         img = "assets/images/scissor.png";
         break;
-      case -1:
+      case AppConstants.LOADING:
         img = "assets/images/loading.png";
         break;
     }
@@ -54,7 +54,7 @@ abstract class _RPSGameStore with Store {
 
   @action
   void playComputer() {
-    computerChoice = -1;
+    computerChoice = AppConstants.LOADING;
     Future.delayed(const Duration(milliseconds: 300), (() {
       int randInt = Random().nextInt(3) + 1;
 
@@ -80,11 +80,6 @@ abstract class _RPSGameStore with Store {
     }));
   }
 
-  //Winning Conditions
-  //Player -- Computer
-  //Rock   -- Scissor
-  //Scissor -- Paper
-  //Paper   -- Rock
   bool isDraw(int player, int computer) {
     if ((player == AppConstants.ROCK && computer == AppConstants.ROCK) ||
         (player == AppConstants.SCISSOR && computer == AppConstants.SCISSOR) ||
@@ -95,6 +90,11 @@ abstract class _RPSGameStore with Store {
     }
   }
 
+  //Winning Conditions
+  /*Player -- Computer*/
+  //Rock   -- Scissor
+  //Scissor -- Paper
+  //Paper   -- Rock
   bool isWin(int player, int computer) {
     if ((player == AppConstants.ROCK && computer == AppConstants.SCISSOR) ||
         (player == AppConstants.SCISSOR && computer == AppConstants.PAPER) ||
